@@ -27,16 +27,13 @@ def step_impl(context):
 
 @when(u'I enter invalid product into the Search box field')
 def step_impl(context):
-    print('STEP: When I enter invalid product into the Search box field')
+    context.driver.find_element(By.NAME, "search").send_keys("Honda")
 
 
 @then(u'Proper message should be displayed in Search results')
 def step_impl(context):
-    print('STEP: Then Proper message should be displayed in Search results')
+    expected_text = "There is no product that matches the search criteria."
+    assert context.driver.find_element(By.XPATH, "//input[@id='button-search']/following-sibling::p").text.__eq__(expected_text)
 
-
-@when(u'I don\'t enter anything into the search box field')
-def step_impl(context):
-    print('STEP: When I don\'t enter anything into the search box field')
 
 
