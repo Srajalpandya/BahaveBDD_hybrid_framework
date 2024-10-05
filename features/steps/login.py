@@ -1,12 +1,10 @@
 from behave import *
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+from datetime import datetime
+
 
 @given(u'I Navigated to login page')
 def step_impl(context):
-    context.driver = webdriver.Chrome()
-    context.driver.maximize_window()
-    context.driver.get("https://tutorialsninja.com/demo/")
     context.driver.find_element(By.XPATH,"//span[text()='My Account']").click()
     context.driver.find_element(By.LINK_TEXT,"Login").click()
 
@@ -24,7 +22,7 @@ def step_impl(context):
 @then(u'I should get logged in')
 def step_impl(context):
     assert context.driver.find_element(By.LINK_TEXT,"Modify your wish list").is_displayed()
-    context.driver.quit()
+
 
 
 @when(u'I enter invalid mail and valid password into the fields')

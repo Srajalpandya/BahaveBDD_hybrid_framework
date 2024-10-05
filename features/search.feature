@@ -17,7 +17,7 @@ Feature:  Search functionality
   @search
   Scenario: Search without entering any product
     Given I got navigated to Home page
-    When I don't enter anything into the search box field
+    When I dont enter anything into the search box field
     And I click on search button
     Then Proper message should be displayed in search results
 

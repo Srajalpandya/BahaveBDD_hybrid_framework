@@ -1,14 +1,10 @@
 from behave import *
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from datetime import datetime
 
 
 @given(u'I navigate to Register Page')
 def step_impl(context):
-    context.driver = webdriver.Chrome()
-    context.driver.maximize_window()
-    context.driver.get("https://tutorialsninja.com/demo/")
     context.driver.find_element(By.XPATH,"//span[text()='My Account']").click()
     context.driver.find_element(By.LINK_TEXT,"Register").click()
 
@@ -30,7 +26,7 @@ def step_impl(context):
 
 
 
-@when(u'I click on Countinue button')
+@when(u'I click on Continue button')
 def step_impl(context):
     context.driver.find_element(By.XPATH,"//input[@value='Continue']").click()
 
@@ -40,7 +36,7 @@ def step_impl(context):
 def step_impl(context):
     expected_text = "Your Account Has Been Created!"
     assert context.driver.find_element(By.XPATH,"//div[@id='content']/h1").text.__eq__(expected_text)
-    context.driver.quit()
+
 
 
 @when(u'I enter all fields')
@@ -75,7 +71,7 @@ def step_impl(context):
 def step_impl(context):
     expected_warning = "Warning: E-Mail Address is already registered!"
     assert context.driver.find_element(By.XPATH,"//div[@id='account-register']/div[1]").text.__contains__(expected_warning)
-    context.driver.quit()
+
 
 @when(u'I dont enter anything into the fields')
 def step_impl(context):
@@ -102,4 +98,4 @@ def step_impl(context):
     assert context.driver.find_element(By.XPATH, "input[@id='input-email']/following-sibling::div").text.__eq__(expected_email_warning)
     assert context.driver.find_element(By.XPATH, "input[@id='input-telephone']/following-sibling::div").text.__eq__(expected_telephone_warning)
     assert context.driver.find_element(By.XPATH, "input[@id='input-password']/following-sibling::div").text.__eq__(expected_password_warning)
-    context.driver.quit()
+

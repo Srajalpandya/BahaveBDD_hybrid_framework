@@ -5,7 +5,7 @@ Feature: Register Account Functionality
     Given I navigate to Register Page
     When I enter mandatory fields
     And I select Privacy Policy option
-    And I click on Countinue button
+    And I click on Continue button
     Then Account should get created
 
   @register
@@ -13,7 +13,7 @@ Feature: Register Account Functionality
     Given I navigate to Register Page
     When I enter all fields
     And I select Privacy Policy option
-    And I click on Countinue button
+    And I click on Continue button
     Then Account should get created
 
   @register
