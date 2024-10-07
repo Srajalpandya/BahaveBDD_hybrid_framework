@@ -2,11 +2,15 @@ from behave import *
 from selenium.webdriver.common.by import By
 from datetime import datetime
 
+from features.pages.HomePage import HomePage
+
 
 @given(u'I Navigated to login page')
 def step_impl(context):
-    context.driver.find_element(By.XPATH,"//span[text()='My Account']").click()
-    context.driver.find_element(By.LINK_TEXT,"Login").click()
+    home_page = HomePage(context.driver)
+    home_page.click_on_my_account()
+    home_page.select_login_option()
+    
 
 
 @when(u'I enter valid email address and password into the fields')

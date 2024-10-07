@@ -10,7 +10,7 @@ def before_scenerio(context,driver):
         context.driver = webdriver.Firefox()
     elif browser_name.__eq__("edge"):
         context.driver = webdriver.Edge()
-        
+
     context.driver.maximize_window()
     context.driver.get(ConfigReader.read_configuration("basic info","url"))
 
